@@ -1,0 +1,17 @@
+all:pushbox  -> pushbox 실행파일 생성
+
+pushbox:game.o map.o main.o	// 실행파일 생성을 위한 오브젝트 파일 검사
+	g++ -W -Wall -o pushbox game.o map.o main.o -lncurses
+
+map.o:map.cpp	//map 오브젝트 파일 생성을 위해 map.cpp 컴파일
+	g++ -W -Wall -c -o map.o map.cpp -lncurses
+
+game.o:game.cpp	//game 오브젝트 파일 생성을 위해 game.cpp 컴파일
+	g++ -W -Wall -c -o game.o game.cpp -lncurses
+
+main.o:main.cpp	//main 오브젝트 파일 생성을 위해 main.cpp 컴파일
+	g++ -W -Wall -c -o main.o main.cpp -lncurses
+
+clean:	// 실행파일 생성 후 필요없는 오브젝트 파일을 지워주는 명령어
+	rm -rf *.o
+
